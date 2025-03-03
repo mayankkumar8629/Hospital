@@ -18,7 +18,7 @@ const app = express();
 console.log("req came");
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://hospital-front-qsze.onrender.com/"],
+    origin: ["http://localhost:5173", "https://hospital-front-qsze.onrender.com"],
     credentials: true, // Allow cookies and authentication headers
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
