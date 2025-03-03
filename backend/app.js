@@ -18,12 +18,13 @@ const app = express();
 console.log("req came");
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow only your frontend
+    origin: ["http://localhost:5173", "https://hospital-wt7i.onrender.com"],
     credentials: true, // Allow cookies and authentication headers
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
   })
 );
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

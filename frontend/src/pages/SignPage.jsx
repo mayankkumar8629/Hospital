@@ -19,7 +19,8 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3000/signup", {
+      const backend_uri = import.meta.env.VITE_URI;
+      const response = await fetch(`${backend_uri}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),

@@ -14,10 +14,11 @@ const EditHospitalForm = () => {
     specialties: "",
     imageUrl: "",
   });
+  const backend_uri = import.meta.env.VITE_URI;
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/hospitals/${id}`)
+      .get(`${backend_uri}/hospitals/${id}`)
       .then((response) => {
         const data = response.data;
         setHospital({
@@ -41,7 +42,7 @@ const EditHospitalForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/hospitals/${id}`, {
+      await axios.put(`${backend_uri}/hospitals/${id}`, {
         ...hospital,
         specialties: hospital.specialties.split(",").map((s) => s.trim()), // Convert back to array
       });

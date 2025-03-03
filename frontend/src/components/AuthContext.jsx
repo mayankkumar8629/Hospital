@@ -7,6 +7,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
 
   const login = (userData) => {
     setUser(userData);
@@ -16,8 +17,9 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       // Call the backend logout endpoint
+      const backend_uri = import.meta.env.VITE_URI;
       const response = await axios.post(
-        "http://localhost:3000/logout",
+        `${backend_uri}/logout`,
         {},
         { withCredentials: true }
       );

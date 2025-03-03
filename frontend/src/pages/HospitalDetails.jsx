@@ -7,10 +7,10 @@ const HospitalDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [hospital, setHospital] = useState(null);
-
+  const backend_uri = import.meta.env.VITE_URI;
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/hospitals/${id}`)
+      .get(`${backend_uri}/hospitals/${id}`)
       .then((response) => setHospital(response.data))
       .catch((error) => console.error("Error fetching hospital:", error));
   }, [id]);
@@ -24,7 +24,7 @@ const HospitalDetails = () => {
     if (!window.confirm("Are you sure you want to delete this hospital?")) return; // Confirm delete
 
     try {
-      await axios.delete(`http://localhost:3000/hospitals/${id}`);
+      await axios.delete(`${backend_uri}/hospitals/${id}`);
       alert("Hospital deleted successfully!");
       navigate("/"); // Redirect to Home page
     } catch (error) {

@@ -22,7 +22,8 @@ const AddHospital = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/newhospital", {
+      const backend_uri = import.meta.env.VITE_URI;
+      const response = await axios.post(`${backend_uri}/newhospital`, {
         ...hospital,
         specialties: hospital.specialties.split(","), // Convert string to array
       });

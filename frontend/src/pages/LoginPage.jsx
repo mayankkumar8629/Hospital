@@ -15,14 +15,17 @@ const LoginPage = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Reset error before making the request
 
     try {
+      const backend_uri = import.meta.env.VITE_URI;
       const response = await axios.post(
-        "http://localhost:3000/login",
+        `${backend_uri}/login`,
         credentials,
         { withCredentials: true } // Ensures cookies are sent for session authentication
       );

@@ -5,10 +5,10 @@ import HospitalCard from "../components/HospitalCard";
 
 const Home = () => {
   const [hospitals, setHospitals] = useState([]);
-
+  const backend_uri = import.meta.env.VITE_URI;
   useEffect(() => {
     axios
-      .get("http://localhost:3000/hospitals") // Ensure this API is running
+      .get(`${backend_uri}/hospitals`) // Ensure this API is running
       .then((response) => setHospitals(response.data))
       .catch((error) => console.error("Error fetching hospitals:", error));
   }, []);
